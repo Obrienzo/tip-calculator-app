@@ -1,0 +1,27 @@
+input {
+    border: none;
+    outline: none;
+}
+
+.selected-tip {
+    background-color: green;
+    color: whitesmoke;
+}
+
+.error-state {
+    color: red;
+    font-family: monospace;
+    font-size: 13px;
+    position: absolute;
+    top: 15px;
+    left: 95px;
+}
+
+
+.people-container {
+    position: relative;
+}
+
+.invalid {
+    border: 1px solid red;
+}
