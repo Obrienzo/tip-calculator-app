@@ -102,6 +102,7 @@ formElement.onreset = () => {
     people = 0;
     errorState = '';
     errorMessage.textContent = '';
+    peopleSize.classList.remove('invalid');
     tipAmount.textContent = '0.00';
     totalAmount.textContent = '0.00';
     tipPercentSelection.forEach(elem => elem.classList.remove('selected-tip'));
