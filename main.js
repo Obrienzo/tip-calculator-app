@@ -1,3 +1,11 @@
+let errorState = '';
+let tipPercentState = 0;
+let amount = 0;
+let people = 0;
+
+ 
+
+const formElement = document.querySelector("form");
 const billAmount = document.getElementById('bill');
 const peopleSize = document.getElementById('people');
 const tipPercentSelection = document.querySelectorAll('.tip-selection');
@@ -6,10 +14,6 @@ const tipAmount = document.querySelector('.tip-amount');
 const totalAmount = document.querySelector('.total-amount');
 const errorMessage = document.querySelector('.error-state');
 
-let errorState = '';
-let tipPercentState = 0;
-let amount = 0;
-let people = 0;
 
 const calculateTipPerPerson = (billAmount, numberOfPeople, rate) => {
     if (billAmount <= 0 || numberOfPeople <=0 || rate <=0) {
@@ -21,6 +25,7 @@ const calculateTipPerPerson = (billAmount, numberOfPeople, rate) => {
 
 }
 
+
 const calculateTotalPerPerson = (totalBill, peopleNumbers) => {
     if (totalBill <= 0 || peopleNumbers <= 0) {
         return;
@@ -31,19 +36,40 @@ const calculateTotalPerPerson = (totalBill, peopleNumbers) => {
 
 }
 
+
+const updateDisplay = () => {
+    if (amount && people && tipPercentState) {
+        const tip = calculateTipPerPerson(amount, people, tipPercentState);
+        const total = calculateTotalPerPerson(amount, people);
+
+        tipAmount.textContent = tip;
+        totalAmount.textContent = total;
+    }
+}
+
+
 tipPercentSelection.forEach(tipSelected => {
     tipSelected.addEventListener('click', () => {
         tipPercentSelection.forEach(elem => elem.classList.remove('selected-tip'));
         tipSelected.classList.add('selected-tip');
-        console.log(tipSelected.textContent);
+        tipPercentState = parseInt(tipSelected.dataset.percent);
+
+        customTip.value = '';
+
+        updateDisplay();
     })
 });
 
-billAmount.addEventListener('input', (ev) => {
-    amount = parseInt(ev.target.value);
-});
 
-peopleSize.addEventListener('input', (ev) => {
+
+// Event handlers for all the input widgets....
+const handleBillchange = (ev) => {
+    amount = parseFloat(ev.target.value);
+    updateDisplay();
+    // console.log(amount)
+}
+
+const handlePeopleSizeChange = (ev) => {
     if (parseInt(ev.target.value) === 0) {
         errorState = 'Can\'t be zero';
         errorMessage.textContent = errorState;
@@ -54,21 +80,29 @@ peopleSize.addEventListener('input', (ev) => {
         ev.target.classList.remove('invalid');
         people = parseInt(ev.target.value);
     }
-})
 
-customTip.addEventListener('input', (ev) => {
-    tipPercentSelection.forEach(elem => {
-        elem.classList.remove('selected-tip');
-        tipPercentState = 0;
-    });
+    updateDisplay();
+}
+
+const handleCustomTip = (ev) => {
+    tipPercentSelection.forEach(elem => elem.classList.remove('selected-tip'));
     tipPercentState = parseInt(ev.target.value);
-});
+
+    updateDisplay();
+}
 
 
-calculateTipPerPerson(amount, people, tipPercentState);
-calculateTotalPerPerson(amount, people);
+// Registering event handlers...
+billAmount.oninput = handleBillchange;
+peopleSize.oninput = handlePeopleSizeChange;
+customTip.oninput = handleCustomTip;
+formElement.onreset = () => {
+    tipPercentState = 0;
+    amount = 0;
+    people = 0;
+    tipAmount.textContent = '0.00';
+    totalAmount.textContent = '0.00';
+    tipPercentSelection.forEach(elem => elem.classList.remove('selected-tip'));
 
-console.log(calculateTipPerPerson(amount, people, tipPercentState), calculateTotalPerPerson(amount, people));
+}
 
-tipAmount.textContent = calculateTipPerPerson(amount, people, tipPercentState);
-totalAmount.textContent = calculateTotalPerPerson(amount, people);
