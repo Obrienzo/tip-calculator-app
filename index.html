@@ -17,44 +17,52 @@
       <article>
         <img src="images/logo.svg" alt="page logo">
         <form>
-          <div>
-            <label for="bill">Bill</label>
-            <p>
-              <img src="images/icon-dollar.svg" alt="dollar icon">
-              <input type="tel" name="bill" id="bill" placeholder="142.55" required>
-            </p>
-          </div>
-          <fieldset>
-            <legend>Select Tip &percnt;</legend>
-            <button type="button" data-percent="5" class="tip-selection">5&percnt;</button>
-            <button type="button" data-percent="10" class="tip-selection">10&percnt;</button>
-            <button type="button" data-percent="15" class="tip-selection">15&percnt;</button>
-            <button type="button" data-percent="25" class="tip-selection">25&percnt;</button>
-            <button type="button" data-percent="50" class="tip-selection">50&percnt;</button>
-            <input type="tel" name="tip" id="custom-tip" placeholder="Custom">
-          </fieldset>
-          <div class="people-container">
-            <label for="people">Number of people</label>
-            <p>
-              <img src="images/icon-person.svg" alt="person icon">
-              <input type="tel" name="people" id="people" min="1" max="130" required>
-              <span class="error-state"></span>
-            </p>
-          </div>
-          <section>
+          <section class="inputs-container">
             <div>
-              <div>
-                <p>Tip Amount</p>
-                <span>/ person</span>
-              </div>
-              <p>&dollar;<span class="tip-amount">0.00</span></p>
+              <label for="bill">Bill</label>
+              <p>
+                <img src="images/icon-dollar.svg" alt="dollar icon">
+                <input type="tel" name="bill" id="bill" placeholder="142.55" required>
+              </p>
             </div>
-            <div>
+            <fieldset>
+              <legend>Select Tip &percnt;</legend>
               <div>
-                <p>Total</p>
-                <span>/ person</span>
+                <button type="button" data-percent="5" class="tip-selection">5&percnt;</button>
+                <button type="button" data-percent="10" class="tip-selection">10&percnt;</button>
+                <button type="button" data-percent="15" class="tip-selection">15&percnt;</button>
+                <button type="button" data-percent="25" class="tip-selection">25&percnt;</button>
+                <button type="button" data-percent="50" class="tip-selection">50&percnt;</button>
+                <div class="custom-wrapper">
+                  <input type="tel" name="tip" id="custom-tip" placeholder="Custom">
+                </div>
               </div>
-              <p>&dollar;<span class="total-amount">0.00</span></p>
+            </fieldset>
+            <div class="people-container">
+              <label for="people">Number of people</label>
+              <p>
+                <img src="images/icon-person.svg" alt="person icon">
+                <input type="tel" name="people" id="people" min="1" max="130" required>
+                <span class="error-state"></span>
+              </p>
+            </div>
+          </section>
+          <section class="result-display">
+            <div class="result-container">
+              <div class="result-wrapper">
+                <div>
+                  <p class="heading-white">Tip Amount</p>
+                  <span class="sub-gray">/ person</span>
+                </div>
+                <p class="amounts">&dollar;<span class="tip-amount">0.00</span></p>
+              </div>
+              <div class="result-wrapper">
+                <div>
+                  <p class="heading-white">Total</p>
+                  <span class="sub-gray">/ person</span>
+                </div>
+                <p class="amounts">&dollar;<span class="total-amount">0.00</span></p>
+              </div>
             </div>
             <button type="reset">RESET</button>
           </section>

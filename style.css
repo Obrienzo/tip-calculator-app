@@ -1,11 +1,143 @@
+html {
+    font-size: 62.5%;
+}
+
+*::before,
+*::after,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Green-400: hsl(172, 67%, 45%);
+    --Green-900: hsl(183, 100%, 15%);
+    --Grey-500: hsl(186, 14%, 43%);
+    --Grey-400: hsl(184, 14%, 56%);
+    --Grey-200: hsl(185, 41%, 84%);
+    --Grey-50: hsl(189, 47%, 97%);
+    --White: hsl(0, 100%, 100%);
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: inherit;
+}
+
 input {
+    background-color: transparent;
     border: none;
     outline: none;
+    color: var(--Green-900);
+    font-size: 2.0rem;
+    width: 100%
+}
+
+fieldset {
+    border: none;
+}
+
+body {
+    background-color: var(--Grey-200);
+    font-size: 2.4rem;
+    color: var(--Grey-500);
+    line-height: 1.2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#app {
+    max-width: 68.5rem;
+    margin: auto;
+    /* border: 1px solid; */
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.0rem;
+    /* border: 1px solid; */
+}
+
+form {
+    background-color: var(--White);
+    border-radius: 1.6rem;
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+label,
+legend {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding-bottom: 1.0rem;
+}
+
+p {
+    position: relative;
+}
+
+p > img {
+    position: absolute;
+    left: 1.0rem;
+    bottom: 0.85rem;
+}
+
+input {
+    background-color: var(--Grey-50);
+    border-radius: 0.4rem;
+    padding: 0.5rem 1.0rem;
+    text-align: end;
+    border: 0.05rem solid var(--Grey-50);
+}
+
+input:focus {
+    background-color: var(--Grey-50);
+    border-color: var(--Green-400);
+}
+
+input:user-invalid {
+    border-color: red;
+}
+
+input:valid {
+    background-color: var(--Grey-50);
+}
+
+.tip-selection {
+    background-color: var(--Green-900);
+    color: var(--White);
+    border-radius: 0.4rem;
+    padding: 0.5rem 1.0rem;
+}
+
+fieldset div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.custom-wrapper {
+    display: flex;
 }
 
 .selected-tip {
-    background-color: green;
-    color: whitesmoke;
+    background-color: var(--Green-400);
+    color: var(--White);
 }
 
 .error-state {
@@ -13,8 +145,8 @@ input {
     font-family: monospace;
     font-size: 13px;
     position: absolute;
-    top: 15px;
-    left: 95px;
+    top: -2.2rem;
+    right: 0;
 }
 
 
@@ -24,4 +156,76 @@ input {
 
 .invalid {
     border: 1px solid red;
+}
+
+
+.result-display {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Green-900);
+    padding: 1.6rem;
+    border-radius: 1.5rem;
+    color: var(--White);
+    font-size: 1.6rem;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.0rem;
+    margin-top: 2.4rem;
+}
+
+.result-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.heading-white {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.sub-gray {
+    color: var(--Grey-400);
+}
+
+.amounts {
+    color: var(--Green-400);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.tip-amount,
+.total-amount {
+    color: var(--Green-400);
+    font-size: 3.5rem;
+}
+
+.result-display > button {
+    color: var(--Green-900);
+    background-color: var(--Green-400);
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    font-size: 2.0rem;
+    margin-top: 2.0rem;
+}
+
+@media screen and (min-width: 678px) {
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 3.5rem;
+    }
+
+    fieldset div {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .result-display {
+        justify-content: space-between;
+    }
 }

@@ -100,6 +100,8 @@ formElement.onreset = () => {
     tipPercentState = 0;
     amount = 0;
     people = 0;
+    errorState = '';
+    errorMessage.textContent = '';
     tipAmount.textContent = '0.00';
     totalAmount.textContent = '0.00';
     tipPercentSelection.forEach(elem => elem.classList.remove('selected-tip'));
