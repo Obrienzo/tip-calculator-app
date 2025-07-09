@@ -10,6 +10,11 @@ html {
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Space Mono';
+    src: url('/Font/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+}
+
 :root {
     --Green-400: hsl(172, 67%, 45%);
     --Green-900: hsl(183, 100%, 15%);
@@ -25,6 +30,8 @@ button {
     border: none;
     background-color: transparent;
     font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
 }
 
 input {
@@ -33,16 +40,23 @@ input {
     outline: none;
     color: var(--Green-900);
     font-size: 2.0rem;
-    width: 100%
+    font-family: inherit;
+    width: 100%;
+    cursor: pointer;
 }
 
 fieldset {
     border: none;
 }
 
+
+
+/* GLOBAL STYLING */
+
 body {
     background-color: var(--Grey-200);
     font-size: 2.4rem;
+    font-family: 'Space Mono', monospace;
     color: var(--Grey-500);
     line-height: 1.2;
     min-height: 100vh;
@@ -52,9 +66,8 @@ body {
 }
 
 #app {
-    max-width: 68.5rem;
+    max-width: 70.5rem;
     margin: auto;
-    /* border: 1px solid; */
 }
 
 article {
@@ -62,7 +75,6 @@ article {
     flex-direction: column;
     align-items: center;
     gap: 2.0rem;
-    /* border: 1px solid; */
 }
 
 form {
@@ -74,6 +86,12 @@ form {
     gap: 1.8rem;
 }
 
+
+
+
+
+/* INPUTS SECTION */
+
 .inputs-container {
     display: flex;
     flex-direction: column;
@@ -83,8 +101,9 @@ form {
 label,
 legend {
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding-bottom: 1.0rem;
+    color: var(--);
 }
 
 p {
@@ -105,8 +124,16 @@ input {
     border: 0.05rem solid var(--Grey-50);
 }
 
+input::placeholder {
+    color: var(--Grey-400);
+}
+
 input:focus {
     background-color: var(--Grey-50);
+    border-color: var(--Green-400);
+}
+
+input:hover {
     border-color: var(--Green-400);
 }
 
@@ -118,11 +145,21 @@ input:valid {
     background-color: var(--Grey-50);
 }
 
+
+
+
+
+/* TIP BUTTONS SELECTION & CUSTOM INPUT WIDGET STYLING */
+
 .tip-selection {
     background-color: var(--Green-900);
     color: var(--White);
     border-radius: 0.4rem;
     padding: 0.5rem 1.0rem;
+}
+
+.tip-selection:hover {
+    background-color: var(--Green-400);
 }
 
 fieldset div {
@@ -150,6 +187,11 @@ fieldset div {
 }
 
 
+
+
+
+/* NUMBER OF PEOPLE FORM WIDGET */
+
 .people-container {
     position: relative;
 }
@@ -158,6 +200,11 @@ fieldset div {
     border: 1px solid red;
 }
 
+
+
+
+
+/* RESULT DISPLAY SECTION STYLING */
 
 .result-display {
     display: flex;
@@ -183,17 +230,18 @@ fieldset div {
 }
 
 .heading-white {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .sub-gray {
     color: var(--Grey-400);
+    font-size: 1.2rem;
 }
 
 .amounts {
     color: var(--Green-400);
-    font-size: 1.8rem;
+    font-size: 3.0rem;
     display: flex;
     align-items: center;
 }
@@ -213,6 +261,15 @@ fieldset div {
     font-size: 2.0rem;
     margin-top: 2.0rem;
 }
+
+.result-display > button:hover {
+    background-color: var(--Grey-200);
+}
+
+
+
+
+/* MEDIA QUERIES FOR THE FORM LAYOUT */
 
 @media screen and (min-width: 678px) {
     form {
